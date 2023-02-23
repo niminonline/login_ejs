@@ -3,9 +3,9 @@ body{
     padding:0px;
     margin:0px;
     width:100%;
-    height: 100vh;
+    height: auto;
     background-image: linear-gradient(100deg, purple ,rgb(5, 176, 255));
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-size: cover;
 }
 .gradient-border{
