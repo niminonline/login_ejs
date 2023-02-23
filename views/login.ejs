@@ -1,0 +1,36 @@
+
+<%- include('header') %>
+
+
+
+    <div class="main-body container-fluid my-5 ">
+    <h1 class="loginheading text-center text-white">Login</h1>
+        <div class="row">
+    <div class=" gradient-border container col-sm-12 shadow">
+        <div class="logincard container ">
+    <form action="/router/login" method="post" class="login-form d-flex flex-column justify-content-center align-items-center">
+    <div class="username-block mt-5">
+        <p class="username-text my-0 text-muted">username</p>
+        <div class="input-group mb-3">
+            <span class="input-group-text bi-person-fill" id="basic-addon1"></span>
+            <input type="text" class="form-control" placeholder="Enter your username" name="username">
+          </div>
+        <p class="username-error"></p>
+    </div>
+        <div class="password-block my-2 ">
+            <p class="username-text my-0 text-muted">password</p>
+            <div class="input-group mb-3">
+                <span class="input-group-text bi bi-lock-fill" id="basic-addon1"></span>
+                <input type="password" class="form-control" placeholder="Enter your password" name="password" >
+              </div>
+            <p class="password-error"></p>
+        </div>
+
+        <button type="submit" class="btn  my-3 rounded-pill px-4" id="signin-btn">Sign in</button>
+    </form>
+    </div>
+    </div>
+</div>
+</div>
+
+    <%- include('footer') %>

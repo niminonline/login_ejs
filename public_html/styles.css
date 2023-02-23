@@ -1,0 +1,39 @@
+
+body{
+    padding:0px;
+    margin:0px;
+    width:100%;
+    height: 100vh;
+    background-image: linear-gradient(100deg, purple ,rgb(5, 176, 255));
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.gradient-border{
+
+   width:500px;
+    /* height: 60vh;  */
+    
+    line-height: 200%;
+    border-radius: 0px 50px;
+    padding: 3px;
+    background: linear-gradient(to right, rgb(255, 251, 25), purple);
+    /* padding: 1rem; */
+
+
+}
+.logincard{
+    background-color: white;
+        /* width:28vw;
+        height: 58vh;
+        line-height: 200%; */
+    border-radius: 0px 50px;
+    padding: 50px 0px;
+}
+#signin-btn{
+    background-image: linear-gradient(30deg, purple ,rgb(5, 176, 255));
+    color: white;
+}
+#signin-btn:hover{
+    background-image: linear-gradient(30deg, rgb(5, 176, 255),purple);
+
+}
