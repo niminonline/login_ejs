@@ -2,7 +2,21 @@
 <%- include('header') %>
 
 
-<h2> Home Page</h2>
+<h2 class="text-center text-white my-5"> Home Page</h2>
+<div class="card-block d-flex justify-content-around row">
+<% for(let i=0;i<=4;i++){ %>
+    <div class="card col-lg-3 col-md-6 col-sm-12 m-5" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+   
+<%}%>
+</div>
+
 
 
 <%- include('footer') %>
