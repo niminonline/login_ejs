@@ -2,6 +2,7 @@ import express from "express";
 import path, { dirname } from 'path';
 import url from 'url'
 import bodyParser from "body-parser";
+import session from "express-session";
 
 import router from "./router.js";
 
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use('/public',express.static(path.join(__dirname+"public_html")));
 app.use(router);
 app.use("/assets",express.static(path.join(__dirname)+ 'public_html/assets'));
+app.use(session({title:"NewONe", secret:"abcabc",saveUninitialized:true }));
 
 // function emailValidation(){
 // {

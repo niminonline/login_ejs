@@ -1,11 +1,12 @@
 import express from 'express';
+import session from 'express-session';
 const router= express.Router();
-
 
 const credentials={
     username:"admin@email.com",
     password:"admin@123"
 }
+
 
 
 router.get('/',(req,res)=>
@@ -21,7 +22,12 @@ const ejsData=[{image:"/assets/images/javascript.png",title:"JavaScript",descrip
 ];
 router.get('/home',(req,res)=>
 {
-    res.render("home",{data:ejsData});
+    if(session.user){
+        res.render("home",{data:ejsData});
+    }
+    else{
+        res.send("Unauthorized Access");
+    }
 })
 
 
@@ -29,7 +35,7 @@ router.post("/login",(req,res)=>
 {
     if ((req.body.username== credentials.username)&& (req.body.password== credentials.password))
     {
-      
+      req.session.user= req.body.username;
         // res.end("Successfull")
        
      //  res.render("login",{x:"Login successfully"});
