@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use('/public',express.static(path.join(__dirname+"public_html")));
 app.use(router);
 app.use("/assets",express.static(path.join(__dirname)+ 'public_html/assets'));
-app.use(session({title:"NewONe", secret:"abcabc",saveUninitialized:true }));
+app.use(session({secret:"abcabc",saveUninitialized:true, resave:true }));
 
 // function emailValidation(){
 // {
@@ -30,6 +30,36 @@ app.use(session({title:"NewONe", secret:"abcabc",saveUninitialized:true }));
 
 // emailvalid=true;
 // } } }
+
+
+
+app.post("/login",(req,res)=>
+{
+    // if ((req.body.username== credentials.username)&& (req.body.password== credentials.password))
+    // {
+        console.log(req.session);
+        console.log(req.body.username);
+         req.session.user= req.body.username;
+        // res.end("Successfull")
+       
+     //  res.render("login",{x:"Login successfully"});
+         
+     res.redirect("home")
+    //    res.set({'Refresh': '25; url=home'});
+    //    next(res.redirect("home"));
+       
+       
+    //    setTimeout(() => {
+    //     res.redirect("home");
+        
+    //    }, 3000); 
+    // }
+    // else
+    res.end("Invalid")
+});
+
+
+
 
 
 
