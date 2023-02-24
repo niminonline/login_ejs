@@ -29,13 +29,19 @@ router.post("/login",(req,res)=>
 {
     if ((req.body.username== credentials.username)&& (req.body.password== credentials.password))
     {
+      
         // res.end("Successfull")
        
-       res.render("login",{x:"Login successfully"});
-       setTimeout(() => {
-        res.redirect("home");
+     //  res.render("login",{x:"Login successfully"});
+         res.redirect("home")
+    //    res.set({'Refresh': '25; url=home'});
+    //    next(res.redirect("home"));
+       
+       
+    //    setTimeout(() => {
+    //     res.redirect("home");
         
-       }, 3000); 
+    //    }, 3000); 
     }
     else
     res.end("Invalid")
