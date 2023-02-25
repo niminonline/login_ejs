@@ -16,7 +16,7 @@
             <span class="input-group-text bi-person-fill" id="basic-addon1"></span>
             <input type="text" class="form-control" placeholder="Enter your username" id="email" name="username" onupdate="emailValidation">
           </div>
-        <p id="email-error"></p>
+        
     </div>
         <div class="password-block my-2 ">
             <p class="username-text my-0 text-muted">password</p>
@@ -24,7 +24,7 @@
                 <span class="input-group-text bi bi-lock-fill" id="basic-addon1"></span>
                 <input type="password" class="form-control" placeholder="Enter your password" name="password" >
               </div>
-            <p id="password-error"> <%=x%> </p>
+            <p class="message text-center text-green"> <%=message%> </p>
         </div>
 
         <button type="submit" class="btn  my-3 rounded-pill px-4" id="signin-btn">Sign in</button>

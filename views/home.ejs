@@ -1,8 +1,20 @@
 
 <%- include('header') %>
 
+<div class="header-bar container-fluid">
+    <div class="container d-flex justify-content-between align-items-center h-100">
+      <h6>Welcome <%=user%></h6>
+      <a class="logout-link" href="/logout"><span class="bi bi-box-arrow-right logout-btn"></span><span class="px-1">Logout </span></a>
 
-<h2 class="text-center text-white my-5"> Home Page</h2>
+    </div>
+</div>
+
+<div class="home-body ">
+<h2 class="text-center text-white"> Home Page</h2>
+
+
+
+
 <div class="card-block container-fluid d-flex justify-content-center row">
 <% data.forEach(element => { %>
     <div class="card col-lg-3 col-md-6 col-sm-12 m-3" style="width: 18rem;">
@@ -18,7 +30,7 @@
 </div>
 
 
-
+</div>
 
 <%- include('footer') %>
 

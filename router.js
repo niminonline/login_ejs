@@ -1,18 +1,46 @@
 import express from 'express';
-//import session from 'express-session';
 const router= express.Router();
 
 const credentials={
     username:"admin@email.com",
     password:"admin@123"
 }
+// const  nocache =(req, res, next) =>{
+//     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+//     res.header('Expires', '-1');
+//     res.header('Pragma', 'no-cache');
+//     next();
+//   }
+
+// const nocache =((req,res,next)=>{   
+//      res.header('Cache-control','no-cache,private,no-store,must-revalidate,max-stale=0,post-check=0,pre-check=0');
+//     next();
+//     })
 
 
+const homeAuth= (req,res,next)=>{
+    console.log(req.session.name);
+    if (req.session.name)
+        next();    
+    else
+    res.redirect("/")
+}
 
-router.get('/',(req,res)=>
+const loginAuth=(req,res,next)=>{
+    if(req.session.name)
+        res.redirect("home");
+    else
+        next();
+ }
+router.get('/',loginAuth,(req,res)=>
 {
-    
-    res.render("login",{x:""});
+    console.log(req.sessionID);
+    res.render("login",{message:""});
+  
+}) 
+router.get('/login',(req,res)=>
+{
+    res.redirect("/");
 }) 
 
 const ejsData=[{image:"/assets/images/javascript.png",title:"JavaScript",description:"JavaScript is a scripting language that enables you to create dynamically updating content, control multimedia, animate images, and pretty much everything else.",btnText:"Js"},
@@ -21,46 +49,27 @@ const ejsData=[{image:"/assets/images/javascript.png",title:"JavaScript",descrip
                 {image:"/assets/images/ejs.png",title:"EJS",description:"EJS is a tool for generating web pages that can include dynamic data and can share templated pieces with other web pages (such as common headers/footers). It is not a front-end framework.",btnText:"eJs"}
 ];
 
-// router.post("/login",(req,res)=>
-// {
-//     if ((req.body.username== credentials.username)&& (req.body.password== credentials.password))
-//     {
-//         console.log(req.session);
-//         console.log(req.body.username);
-//          req.session.user= req.body.username;
-//         // res.end("Successfull")
-       
-//      //  res.render("login",{x:"Login successfully"});
-         
-//      res.redirect("home")
-//     //    res.set({'Refresh': '25; url=home'});
-//     //    next(res.redirect("home"));
-       
-       
-//     //    setTimeout(() => {
-//     //     res.redirect("home");
-        
-//     //    }, 3000); 
-//     }
-//     else
-//     res.end("Invalid")
-// });
-
-router.get('/home',(req,res)=>
+router.post("/login",(req,res)=>
 {
+    if ((req.body.username == credentials.username)&& (req.body.password== credentials.password))
+    {
+    req.session.name= req.body.username;  
+     res.redirect("home")
+    }
+    else
+    res.end("Invalid")
+});
 
-    res.render("home",{data:ejsData});
-
-    // if(session.user){
-    //     res.render("home",{data:ejsData});
-    // }
-    // else{
-    //     res.send("Unauthorized Access");
-    // }
+router.get('/home',homeAuth,(req,res)=>
+{
+    res.render("home",{data:ejsData,user:req.session.name});
 })
 
+router.get("/logout",(req,res)=>{
+    req.session.destroy();
+    // res.header('Cache-control','no-cache,private,no-store,must-revalidate,max-stale=0,post-check=0,pre-check=0');
+    res.render("login",{message:"Logged out successfully"})
 
-
-
+})
 
 export default router;
