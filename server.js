@@ -18,9 +18,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use('/public',express.static(path.join(__dirname+"public_html")));
 
 //Session
-app.use(session({secret:"abcabc",saveUninitialized:true, resave:true,
+app.use(session({
+       secret:"abcabc",saveUninitialized:true, resave:true,
 cookie:{maxAge:1000000,
         } }));
+
 app.use((req,res,next)=>{   
      res.header('Cache-control','no-cache,private,no-store,must-revalidate,max-stale=0,post-check=0,pre-check=0');
     next();

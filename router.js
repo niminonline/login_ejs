@@ -5,18 +5,6 @@ const credentials={
     username:"admin@email.com",
     password:"admin@123"
 }
-// const  nocache =(req, res, next) =>{
-//     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-//     res.header('Expires', '-1');
-//     res.header('Pragma', 'no-cache');
-//     next();
-//   }
-
-// const nocache =((req,res,next)=>{   
-//      res.header('Cache-control','no-cache,private,no-store,must-revalidate,max-stale=0,post-check=0,pre-check=0');
-//     next();
-//     })
-
 
 const homeAuth= (req,res,next)=>{
     console.log(req.session.name);
@@ -67,7 +55,6 @@ router.get('/home',homeAuth,(req,res)=>
 
 router.get("/logout",(req,res)=>{
     req.session.destroy();
-    // res.header('Cache-control','no-cache,private,no-store,must-revalidate,max-stale=0,post-check=0,pre-check=0');
     res.render("login",{message:"Logged out successfully"})
 
 })
