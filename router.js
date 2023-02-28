@@ -45,8 +45,7 @@ router.post("/login",(req,res)=>
      res.redirect("home")
     }
     else
-    res.end("Invalid")
-});
+    res.render("login",{message:"Invalid Username/Password"})});
 
 router.get('/home',homeAuth,(req,res)=>
 {

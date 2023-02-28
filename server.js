@@ -1,5 +1,5 @@
 import express from "express";
-import path, { dirname } from 'path';
+import path from 'path';
 import url from 'url'
 import bodyParser from "body-parser";
 import session from "express-session";
